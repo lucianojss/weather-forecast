@@ -1,23 +1,19 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div layout="column">
+  <md-content layout-padding>
+    <h2 class="main-title">Weather Forecast</h2>
+    <form name="requestForecastForm" ng-submit="requestForecastForm.$valid && requestForecast();" novalidate required>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+      <md-input-container md-no-float class="md-block">
+        <input ng-model="address" name="address" ng-autocomplete type="text" placeholder="Insert a city name" required>
+        <md-icon md-svg-src="images/ic_room_black_24px.svg" style="display:inline-block;"></md-icon>
+        <div ng-messages="requestForecastForm.address.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button type="submit" class="md-raised md-primary"> Get forecast </md-button>
+      </section>
+      </form>
+  </md-content>
 </div>

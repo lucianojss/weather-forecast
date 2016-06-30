@@ -8,10 +8,24 @@
  * Controller of the weatherForecastApp
  */
 angular.module('weatherForecastApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', mainController);
+
+mainController.$inject = ['$scope','forecastService'];
+
+function mainController($scope,forecastService) {
+
+  $scope.address = "";
+  $scope.requestForecast = function(){
+
+    forecastService.getForecastbyLocation($scope.address)
+      .then(function successCallback(data) {
+
+        console.log(data);
+
+      }, function errorCallback(error) {
+        //TODO
+      });
+      //console.log("simmmm"+$scope.address);
+  };
+
+}
