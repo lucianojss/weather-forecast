@@ -21,8 +21,9 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
-
-
+.cloud-main{
+  width: 30%;
+}
 .main-title{
   text-align: center;
 }
