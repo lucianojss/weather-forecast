@@ -34,7 +34,19 @@
 .error-text{
   text-align: center;
 }
-
+.weather-title{
+  padding-bottom: 0;
+}
+.weather-content{
+  padding-top: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+.weather-astronomy{
+  color: rgba(0,0,0,0.54);
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .current-weather{
   font-size: xx-large;
 }

@@ -17,7 +17,7 @@
 
 <md-content ng-if="!error && !loading && !notfound">
   <md-card>
-    <md-card-title>
+    <md-card-title class="weather-title">
       <md-card-title-text>
         <span class="md-headline">{{ location.city }}, {{ location.country }}</span>
         <span class="md-subhead">{{date | date:'HH:mm dd-MM-yyyy'}}</span>
@@ -34,16 +34,25 @@
         </md-card-actions>
       </md-card-title-media>
     </md-card-title>
-    <md-card-content layout="row" layout-xs="column" layout-align="center center">
-      <div class="current-weather" flex="none">
-        <i class="wi wi-yahoo-{{ item.code }}"></i>
-        <span>{{ item.temp | formatTemperature: units.conversion}}</span>
-        <span>º{{units.temperature}}</span>
-      </div>
-      <div flex="auto" layout-margin>
-        <div><i class="wi wi-humidity"></i> Humidity {{ atmosphere.humidity }} %</div>
-        <div><i class="wi wi-wind-direction"></i> Wind {{ wind.speed | formatSpeed: units.speedConversion}} {{units.speed}}</div>
-      </div>
+    <md-card-content class="weather-content" layout="column" layout-align="center left">
+      <md-content class="weather-astronomy" layout="row" layout-padding>
+        <i class="wi wi-sunrise"></i>
+        <div>{{ astronomy.sunrise }} </div>
+        <i class="wi wi-sunset"></i>
+        <div>{{ astronomy.sunset }} </div>
+      </md-content>
+      <md-content layout="row" layout-xs="column" layout-align="center center" layout-padding>
+        <div class="current-weather" flex="none">
+          <i class="wi wi-yahoo-{{ item.code }}"></i>
+          <span>{{ item.temp | formatTemperature: units.conversion}}</span>
+          <span>º{{units.temperature}}</span>
+        </div>
+        <div flex="auto" layout-margin>
+          <div><i class="wi wi-humidity"></i> Humidity {{ atmosphere.humidity }} %</div>
+          <div><i class="wi wi-wind-direction"></i> Wind {{ wind.speed | formatSpeed: units.speedConversion}} {{units.speed}}</div>
+        </div>
+      </md-content>
+
     </md-card-content>
   </md-card>
 
