@@ -1,10 +1,9 @@
-<md-content layout-margin>
+<md-content class="main-weather" layout-margin>
   <md-content layout="column" layout-align="center center">
-    <img class="cloud-main" src="../images/cloud1.png">
+    <img class="cloud-pic" src="../images/cloud1.png">
     <h1 class="main-title">Weather Forecast</h1>
   </md-content>
   <form name="requestForecastForm" ng-submit="requestForecastForm.$valid && requestForecast();" novalidate required>
-
     <md-input-container md-no-float class="md-block">
       <input ng-model="address" maxlength="100" name="address" ng-autocomplete type="text" placeholder="Insert a city name" required>
       <md-icon md-svg-src="images/ic_room_black_24px.svg" style="display:inline-block;"></md-icon>
@@ -12,7 +11,6 @@
         <div ng-message="required">This is required.</div>
       </div>
     </md-input-container>
-
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
       <md-button type="submit" class="md-raised md-primary"> Get forecast</md-button>
     </section>
