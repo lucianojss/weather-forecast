@@ -10,22 +10,18 @@
 angular.module('weatherForecastApp')
   .controller('MainCtrl', mainController);
 
-mainController.$inject = ['$scope','forecastService'];
+mainController.$inject = ['$scope','$location'];
 
-function mainController($scope,forecastService) {
-
+function mainController($scope,$location) {
+  $scope.loading = false;
   $scope.address = "";
+
   $scope.requestForecast = function(){
 
-    forecastService.getForecastbyLocation($scope.address)
-      .then(function successCallback(data) {
+      var trimmedAddress = $scope.address.trim();
 
-        console.log(data);
-
-      }, function errorCallback(error) {
-        //TODO
-      });
-      //console.log("simmmm"+$scope.address);
+      if(trimmedAddress != null && trimmedAddress.length > 0){
+        $location.path('/forecast/'+trimmedAddress);
+      }
   };
-
 }

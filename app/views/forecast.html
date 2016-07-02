@@ -1,0 +1,61 @@
+<md-content layout="column" layout-sm="column" layout-align="center center" ng-show="loading">
+  <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+  <p>Loading</p>
+</md-content>
+
+<md-content layout="column" layout-sm="column" layout-align="center center" ng-show="error">
+  <i class="material-icons error-icon">error_outline</i>
+  <p class="error-text">Ups, we are having difficulties to connect to the server, try again later.</p>
+  <md-button class="md-raised md-warn" href="/#/">Go Back</md-button>
+</md-content>
+
+<md-content layout="column" layout-sm="column" layout-align="center center" ng-show="notfound">
+  <i class="material-icons error-icon">edit_location</i>
+  <p class="error-text">No weather forecast found for the given location, try another one.</p>
+  <md-button class="md-raised md-warn" href="/#/">Go Back</md-button>
+</md-content>
+
+<md-content ng-if="!error && !loading && !notfound">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{ location.city }}, {{ location.country }}</span>
+        <span class="md-subhead">{{date | date:'HH:mm dd-MM-yyyy'}}</span>
+        <span class="md-subhead">{{item.text}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Refresh" ng-click="loadWeather()">
+            <md-tooltip md-direction="left">
+              Refresh
+            </md-tooltip>
+            <md-icon class="material-icons">refresh</md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content layout="row" layout-xs="column" layout-align="center center">
+      <div class="current-weather" flex="none">
+        <i class="wi wi-yahoo-{{ item.code }}"></i>
+        <span>{{ item.temp | formatTemperature: units.conversion}}</span>
+        <span>º{{units.temperature}}</span>
+      </div>
+      <div flex="auto" layout-margin>
+        <div><i class="wi wi-humidity"></i> Humidity {{ atmosphere.humidity }} %</div>
+        <div><i class="wi wi-wind-direction"></i> Wind {{ wind.speed | formatSpeed: units.speedConversion}} {{units.speed}}</div>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card ng-repeat="forecast in forecasts | limitTo: 5">
+    <md-card-content layout="row" layout-margin layout-xs="column" layout-align="center center">
+      <div flex>{{forecast.day}} {{forecast.date}}</div>
+      <i flex="none" class="forecast-weather wi wi-yahoo-{{ forecast.code }}"></i>
+      <div flex>{{ forecast.text }}</div>
+      <div flex="none" layout="row">
+        <i flex class="forecast-weather wi wi-thermometer"></i>
+        <span flex>{{forecast.high | formatTemperature: units.conversion}} º {{units.temperature}}
+        {{forecast.low | formatTemperature: units.conversion}} º {{units.temperature}}</span></div>
+    </md-card-content>
+  </md-card>
+</md-content>

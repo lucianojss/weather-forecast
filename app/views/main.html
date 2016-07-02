@@ -1,19 +1,18 @@
-<div layout="column">
-  <md-content layout-padding>
-    <h2 class="main-title">Weather Forecast</h2>
-    <form name="requestForecastForm" ng-submit="requestForecastForm.$valid && requestForecast();" novalidate required>
+<md-content layout-margin>
+  <h1 class="main-title">Weather Forecast</h1>
+  <form name="requestForecastForm" ng-submit="requestForecastForm.$valid && requestForecast();" novalidate required>
 
-      <md-input-container md-no-float class="md-block">
-        <input ng-model="address" name="address" ng-autocomplete type="text" placeholder="Insert a city name" required>
-        <md-icon md-svg-src="images/ic_room_black_24px.svg" style="display:inline-block;"></md-icon>
-        <div ng-messages="requestForecastForm.address.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <input ng-model="address" maxlength="100" name="address" ng-autocomplete type="text" placeholder="Insert a city name" required>
+      <md-icon md-svg-src="images/ic_room_black_24px.svg" style="display:inline-block;"></md-icon>
+      <div ng-messages="requestForecastForm.address.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
 
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
-        <md-button type="submit" class="md-raised md-primary"> Get forecast </md-button>
-      </section>
-      </form>
-  </md-content>
-</div>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+      <md-button type="submit" class="md-raised md-primary"> Get forecast</md-button>
+    </section>
+  </form>
+</md-content>
+

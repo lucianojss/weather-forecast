@@ -20,18 +20,25 @@ angular
     'ngAutocomplete'
   ])
   .config(function ($routeProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/forecast/:query', {
+        templateUrl: 'views/forecast.html',
+        controller: 'ForecastCtrl',
+        controllerAs: 'forecast',
+        resolve: {
+          query: function ($route) {
+            return $route.current.params.query;
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
       });
+
   });
