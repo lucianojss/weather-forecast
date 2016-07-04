@@ -28,7 +28,6 @@ function forecastController($scope, query, forecastService, $location, $cookies)
 
     forecastService.getForecastbyLocation($scope.address)
       .then(function successCallback(data) {
-        console.log(data);
         if (data.data.query.results != null) {
           $scope.notfound = false;
           //get units
