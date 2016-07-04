@@ -392,7 +392,14 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
-        }]
+        },
+	 {
+          expand: true,
+          cwd: 'bower_components/weather-icons',
+          src: 'font/*',
+          dest: '<%= yeoman.dist %>'
+        }	
+	]
       },
       styles: {
         expand: true,

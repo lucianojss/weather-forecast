@@ -6,7 +6,9 @@
   <form name="requestForecastForm" ng-submit="requestForecastForm.$valid && requestForecast();" novalidate required>
     <md-input-container md-no-float class="md-block">
       <input ng-model="address" maxlength="100" name="address" ng-autocomplete type="text" placeholder="Insert a city name" required>
-      <md-icon md-svg-src="images/ic_room_black_24px.svg" style="display:inline-block;"></md-icon>
+      <md-icon style="display:inline-block;">
+<i class="material-icons" style="display:inline-block;">room</i>	
+</md-icon>	
       <div ng-messages="requestForecastForm.address.$error">
         <div ng-message="required">This is required.</div>
       </div>
