@@ -18,7 +18,6 @@ function forecastController($scope, query, forecastService, $location, $cookies)
 
     $scope.loading = true;
     $scope.error = false;
-    $scope.date = new Date();
 
     //check if query exists
     if (query == null && query.length == 0) {
@@ -29,7 +28,7 @@ function forecastController($scope, query, forecastService, $location, $cookies)
 
     forecastService.getForecastbyLocation($scope.address)
       .then(function successCallback(data) {
-
+        console.log(data);
         if (data.data.query.results != null) {
           $scope.notfound = false;
           //get units
@@ -37,7 +36,7 @@ function forecastController($scope, query, forecastService, $location, $cookies)
           $scope.atmosphere = data.data.query.results.channel.atmosphere;
           $scope.astronomy = data.data.query.results.channel.astronomy;
           $scope.wind = data.data.query.results.channel.wind;
-
+          $scope.date = data.data.query.results.channel.lastBuildDate;
           $scope.item = data.data.query.results.channel.item.condition;
           $scope.forecasts = data.data.query.results.channel.item.forecast;
 
